@@ -40,7 +40,7 @@ const App = () => {
       {index && (
         <img
           src={data[index].download_url}
-          alt="image"
+          alt="pic"
           width="500"
           height="500"
         />
