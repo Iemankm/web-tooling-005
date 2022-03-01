@@ -1,8 +1,20 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "@testing-library/react";
+import App from "./App";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe("App", () => {
+  it("should not break", () => {
+    render(<App />);
+    expect(screen.getByTestId("main")).toBeVisible();
+  });
+
+  it("should start at 1", () => {
+    render(<App />);
+    expect(screen.getByTestId("currentAmount")).toHaveTextContent("0");
+  });
+
+  it("should increment", () => {
+    render(<App />);
+    expect(screen.getByTestId("currentAmount")).toHaveTextContent("0");
+    expect(screen.getByTestId("currentAmount")).toHaveTextContent("1");
+  });
 });
