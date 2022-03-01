@@ -38,7 +38,12 @@ const App = () => {
       <br />
       <br />
       {index && (
-        <img src={data[index].download_url} al="" width="500" height="500" />
+        <img
+          src={data[index].download_url}
+          alt="image"
+          width="500"
+          height="500"
+        />
       )}
 
       <div data-test="main">
