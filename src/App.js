@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 
-const ENDPOINT = "https://picsum.photos/v2/list";
+export const ENDPOINT = "https://picsum.photos/v2/list";
 
 const fetchJSON = async (endpoint) =>
   await fetch(endpoint).then((x) => x.json());
@@ -29,11 +29,13 @@ const App = () => {
 
   const [index, setIndex] = useState(null);
   const data = useGetData();
-  if (!data) return <div>loading</div>;
+  if (!data) return <div data-testid="loading">loading</div>;
   return (
     <div>
       {data.map((x, i) => (
-        <button onClick={() => setIndex(i)}>{x.author}</button>
+        <button key={x.author + i} onClick={() => setIndex(i)}>
+          {x.author}
+        </button>
       ))}
       <br />
       <br />
@@ -45,14 +47,13 @@ const App = () => {
           height="500"
         />
       )}
-
-      <div data-test="main">
+      <div data-testid="main">
         <p>How Many pieces do you want?</p>
-        <button onClick={less} data-test="lessbtn">
+        <button onClick={less} data-testid="lessbtn">
           -
         </button>
         <pre id="currentAmount">{amount}</pre>
-        <button onClick={more} data-test="morebtn">
+        <button onClick={more} data-testid="morebtn">
           +
         </button>
       </div>
